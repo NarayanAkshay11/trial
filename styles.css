@@ -39,7 +39,8 @@ header {
 }
 
 .logo {
-    height: 60px;
+    height: 80px; /* Enlarged logo size */
+    margin-left: 0; /* Shift logo to left end */
 }
 
 nav ul {
@@ -127,7 +128,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Dark grey gradient */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,138 +174,27 @@ main {
     background-color: var(--card-background);
     border-radius: 8px;
     padding: 2rem;
-    margin: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 200px;
-}
-
-.counter {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.team-member {
-    background-color: var(--card-background);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.team-member:hover {
-    transform: translateY(-5px);
-}
-
-.team-member img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.team-member-info {
-    padding: 1rem;
-    color: var(--primary-color);
-}
-
-.team-member-social {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.team-member-social a {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    margin: 0 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.team-member-social a:hover {
-    color: var(--accent-color);
-}
-
-.about-section {
-    background-color: var(--card-background);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.papers-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.paper {
-    background-color: var(--card-background);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.paper-button {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.paper-button:hover {
-    background-color: #e68a00;
-}
-
-.asv-section {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    width: 150px;
 }
 
-.asv-name {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+.counter-item h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
 }
 
-.asv-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.asv-specs {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.spec-column {
-    flex: 1;
-    min-width: 250px;
-    margin: 1rem;
-    background-color: var(--card-background);
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.counter-item p {
+    font-size: 1.2rem;
+    color: var(--primary-color);
 }
 
 footer {
     background-color: var(--primary-color);
     color: var(--text-color);
     padding: 2rem;
+    position: relative;
 }
 
 .footer-content {
@@ -316,14 +206,17 @@ footer {
 }
 
 .footer-section {
-    flex: 1;
+    width: 30%;
     margin-bottom: 1rem;
-    min-width: 200px;
 }
 
 .footer-section h3 {
-    font-family: 'Roboto Slab', serif;
     margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.footer-section p, .footer-section ul {
+    margin-bottom: 0.5rem;
 }
 
 .footer-section ul {
@@ -334,117 +227,96 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.footer-section a {
+.footer-section ul li a {
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
-.footer-section a:hover {
+.footer-section ul li a:hover {
     color: var(--accent-color);
 }
 
 .social-icons a {
+    color: var(--text-color);
     font-size: 1.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
 }
 
 .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1rem;
 }
 
 .map-container {
-    flex: 1;
-    max-width: 50%;
-}
-
-.university-logo {
-    flex: 1;
-    max-width: 50%;
-    text-align: right;
+    width: 60%;
 }
 
 .university-logo img {
-    max-height: 100px;
-}
-
-#search-results-modal {
-    display: none;
-    position: fixed;
-    top: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--card-background);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-    max-width: 90%;
-    width: 600px;
+    height: 80px; /* Enlarged logo size */
 }
 
 @media (max-width: 768px) {
     .header-content {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .logo {
-        height: 50px;
-    }
-
-    nav {
-        width: 100%;
-        display: none;
-    }
-
-    nav.show {
-        display: block;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin: 0.5rem 0;
+        height: 60px;
     }
 
     .mobile-menu-toggle {
         display: block;
     }
 
-    .search-container {
+    .nav-menu {
+        display: none;
         width: 100%;
-        margin-top: 1rem;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
     }
 
-    #search-input {
-        flex-grow: 1;
-    }
-
-    .counter-container {
+    .nav-menu ul {
         flex-direction: column;
+        width: 100%;
     }
 
-    .counter-item {
-        margin-bottom: 2rem;
+    .nav-menu ul li {
+        margin: 0;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--secondary-color);
+    }
+
+    .nav-menu ul li a:hover {
+        background-color: var(--accent-color);
+        color: var(--text-color);
     }
 
     .footer-content {
         flex-direction: column;
+        align-items: center;
     }
 
-    .footer-bottom {
-        flex-direction: column;
+    .footer-section {
+        width: 100%;
+        text-align: center;
     }
 
-    .map-container, .university-logo {
-        max-width: 100%;
-        margin-bottom: 1rem;
+    .map-container {
+        width: 100%;
     }
 }
