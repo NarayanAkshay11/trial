@@ -36,7 +36,7 @@ $(document).ready(function() {
     // Smooth scrolling for anchor links
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href'));
-        if (target.length) {
+        if( target.length ) {
             event.preventDefault();
             $('html, body').stop().animate({
                 scrollTop: target.offset().top - 80 // Adjust for fixed header
@@ -50,33 +50,82 @@ $(document).ready(function() {
     });
 
     // Search functionality
-    function performSearch(query) {
-        const lowerCaseQuery = query.toLowerCase();
-        let found = false;
+    function performSearch() {
+        var query = $('#search-input').val().toLowerCase();
+        var results = [];
 
-        searchData.forEach(item => {
-            if (item.title.toLowerCase().includes(lowerCaseQuery) || item.keywords.toLowerCase().includes(lowerCaseQuery)) {
-                window.location.href = item.url;
-                found = true;
-                return false; // Exit loop
+        searchData.forEach(function(item) {
+            if (item.title.toLowerCase().includes(query) || item.keywords.toLowerCase().includes(query)) {
+                results.push(item);
             }
         });
 
-        if (!found) {
-            alert("No results found");
+        if (results.length > 0) {
+            var resultsHTML = '<ul>';
+            results.forEach(function(result) {
+                resultsHTML += '<li><a href="' + result.url + '">' + result.title + '</a></li>';
+            });
+            resultsHTML += '</ul>';
+            $('#search-results').html(resultsHTML).show();
+        } else {
+            $('#search-results').html('<p>No results found.</p>').show();
         }
     }
 
-    // Trigger search on button click or enter key press
+    // Trigger search on button click or Enter key press
     $('#search-button').on('click', function() {
-        const query = $('#search-input').val();
-        performSearch(query);
+        performSearch();
     });
 
-    $('#search-input').on('keypress', function(e) {
-        if (e.which == 13) { // Enter key pressed
-            const query = $(this).val();
-            performSearch(query);
+    $('#search-input').on('keypress', function(event) {
+        if (event.which === 13) { // Enter key
+            performSearch();
+        }
+    });
+
+    // Hide search results when clicking outside
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#search-container').length) {
+            $('#search-results').hide();
         }
     });
 });
+
+// Sample search data
+var searchData = [
+    {
+        title: "Home",
+        url: "index.html",
+        keywords: "home, welcome, start"
+    },
+    {
+        title: "About",
+        url: "about.html",
+        keywords: "about, information, details"
+    },
+    {
+        title: "ASV",
+        url: "asv.html",
+        keywords: "autonomous surface vehicle, specs, details"
+    },
+    {
+        title: "Team",
+        url: "team.html",
+        keywords: "team, members, people"
+    },
+    {
+        title: "Sponsors",
+        url: "sponsors.html",
+        keywords: "sponsors, support, funding"
+    },
+    {
+        title: "Contact Us",
+        url: "contact.html",
+        keywords: "contact, get in touch, reach out"
+    },
+    {
+        title: "Papers",
+        url: "papers.html",
+        keywords: "papers, research, articles"
+    }
+];
