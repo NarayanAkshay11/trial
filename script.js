@@ -36,7 +36,7 @@ $(document).ready(function() {
     // Smooth scrolling for anchor links
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href'));
-        if( target.length ) {
+        if (target.length) {
             event.preventDefault();
             $('html, body').stop().animate({
                 scrollTop: target.offset().top - 80 // Adjust for fixed header
@@ -47,5 +47,36 @@ $(document).ready(function() {
     // Mobile menu toggle
     $('.mobile-menu-toggle').on('click', function() {
         $('nav ul').toggleClass('show');
+    });
+
+    // Search functionality
+    function performSearch(query) {
+        const lowerCaseQuery = query.toLowerCase();
+        let found = false;
+
+        searchData.forEach(item => {
+            if (item.title.toLowerCase().includes(lowerCaseQuery) || item.keywords.toLowerCase().includes(lowerCaseQuery)) {
+                window.location.href = item.url;
+                found = true;
+                return false; // Exit loop
+            }
+        });
+
+        if (!found) {
+            alert("No results found");
+        }
+    }
+
+    // Trigger search on button click or enter key press
+    $('#search-button').on('click', function() {
+        const query = $('#search-input').val();
+        performSearch(query);
+    });
+
+    $('#search-input').on('keypress', function(e) {
+        if (e.which == 13) { // Enter key pressed
+            const query = $(this).val();
+            performSearch(query);
+        }
     });
 });
