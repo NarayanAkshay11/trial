@@ -448,6 +448,8 @@ footer {
     }
 
     .university-logo {
-        max-width: 100%;
+        width: 50%; /* Reduce the logo size */
+        margin: 0 auto;
+        display: block;
     }
 }
