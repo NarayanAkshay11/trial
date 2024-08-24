@@ -36,7 +36,7 @@ $(document).ready(function() {
     // Smooth scrolling for anchor links
     $('a[href^="#"]').on('click', function(event) {
         var target = $(this.getAttribute('href'));
-        if( target.length ) {
+        if (target.length) {
             event.preventDefault();
             $('html, body').stop().animate({
                 scrollTop: target.offset().top - 80 // Adjust for fixed header
@@ -53,6 +53,17 @@ $(document).ready(function() {
     function performSearch() {
         var query = $('#search-input').val().toLowerCase();
         var results = [];
+
+        // Example search data
+        var searchData = [
+            { title: "Home", url: "index.html", keywords: "home, welcome, start" },
+            { title: "About", url: "about.html", keywords: "about, information, details" },
+            { title: "ASV", url: "asv.html", keywords: "autonomous surface vehicle, specs, details" },
+            { title: "Team", url: "team.html", keywords: "team, members, people" },
+            { title: "Sponsors", url: "sponsors.html", keywords: "sponsors, support, funding" },
+            { title: "Contact Us", url: "contact.html", keywords: "contact, get in touch, reach out" },
+            { title: "Papers", url: "papers.html", keywords: "papers, research, articles" }
+        ];
 
         searchData.forEach(function(item) {
             if (item.title.toLowerCase().includes(query) || item.keywords.toLowerCase().includes(query)) {
@@ -90,42 +101,3 @@ $(document).ready(function() {
         }
     });
 });
-
-// Sample search data
-var searchData = [
-    {
-        title: "Home",
-        url: "index.html",
-        keywords: "home, welcome, start"
-    },
-    {
-        title: "About",
-        url: "about.html",
-        keywords: "about, information, details"
-    },
-    {
-        title: "ASV",
-        url: "asv.html",
-        keywords: "autonomous surface vehicle, specs, details"
-    },
-    {
-        title: "Team",
-        url: "team.html",
-        keywords: "team, members, people"
-    },
-    {
-        title: "Sponsors",
-        url: "sponsors.html",
-        keywords: "sponsors, support, funding"
-    },
-    {
-        title: "Contact Us",
-        url: "contact.html",
-        keywords: "contact, get in touch, reach out"
-    },
-    {
-        title: "Papers",
-        url: "papers.html",
-        keywords: "papers, research, articles"
-    }
-];
